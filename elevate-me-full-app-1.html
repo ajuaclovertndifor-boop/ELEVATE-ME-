@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Elevate Me — App Screens</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=Public+Sans:wght@400;500;600;700&display=swap');
+
+  :root{
+    --forest: #26311F;
+    --forest-deep: #1C2517;
+    --parchment: #F2ECDA;
+    --ink: #21261B;
+    --ink-soft: #55584A;
+    --gold: #C79A3D;
+    --sage: #8FA07C;
+    --clay: #B5765B;
+    --line: rgba(33,38,27,0.12);
+  }
+
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{
+    background:#DAD4C2;
+    font-family:'Public Sans', sans-serif;
+    padding:48px 20px 80px;
+  }
+
+  .row{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:44px;
+    max-width:1360px;
+    margin:0 auto;
+  }
+
+  .stage{ display:flex; flex-direction:column; align-items:center; gap:16px; }
+
+  .caption{
+    font-family:'Fraunces', serif;
+    font-size:16px;
+    color:var(--ink);
+    text-align:center;
+  }
+
+  .phone{
+    width:375px;
+    height:812px;
+    background:var(--parchment);
+    border-radius:44px;
+    border:10px solid var(--forest-deep);
+    box-shadow:0 40px 70px -20px rgba(28,37,23,0.45), 0 0 0 1px rgba(28,37,23,0.08);
+    overflow:hidden;
+    position:relative;
+    display:flex;
+    flex-direction:column;
+  }
+
+  .status{
+    display:flex; justify-content:space-between; align-items:center;
+    padding:16px 26px 4px;
+    font-size:13px; font-weight:600; color:var(--ink);
+    flex-shrink:0;
+  }
+
+  /* ---------- shared nav ---------- */
+  .nav{
+    display:flex;
+    justify-content:space-around;
+    align-items:center;
+    padding:12px 10px 22px;
+    background:var(--parchment);
+    border-top:1px solid var(--line);
+    flex-shrink:0;
+  }
+  .nav-item{
+    display:flex; flex-direction:column; align-items:center; gap:4px;
+    font-size:10px; color:var(--ink-soft); font-weight:600;
+  }
+  .nav-item.active{ color:var(--forest); }
+  .nav-dot{ width:5px; height:5px; border-radius:50%; background:var(--gold); }
+
+  /* ================= CHAT SCREEN ================= */
+  .chat-header{
+    padding:14px 22px 16px;
+    display:flex; align-items:center; gap:12px;
+    border-bottom:1px solid var(--line);
+    flex-shrink:0;
+  }
+  .chat-avatar{
+    width:38px; height:38px; border-radius:12px;
+    background:linear-gradient(160deg, var(--sage), var(--forest));
+    display:flex; align-items:center; justify-content:center;
+    font-size:17px;
+  }
+  .chat-title{ font-family:'Fraunces', serif; font-size:16px; font-weight:600; color:var(--ink); }
+  .chat-status{ font-size:11px; color:var(--sage); font-weight:600; }
+
+  .chat-body{
+    flex:1;
+    overflow:hidden;
+    padding:18px 20px;
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+  }
+
+  .bubble{
+    max-width:82%;
+    padding:12px 15px;
+    border-radius:18px;
+    font-size:13.5px;
+    line-height:1.45;
+  }
+  .bubble.bot{
+    background:#E8E1CB;
+    color:var(--ink);
+    border-bottom-left-radius:5px;
+    align-self:flex-start;
+  }
+  .bubble.user{
+    background:var(--forest);
+    color:var(--parchment);
+    border-bottom-right-radius:5px;
+    align-self:flex-end;
+  }
+  .bubble-tag{
+    font-size:10.5px;
+    color:var(--clay);
+    font-weight:700;
+    letter-spacing:0.02em;
+    margin-bottom:6px;
+    align-self:flex-start;
+  }
+
+  .chip-row{
+    display:flex; flex-wrap:wrap; gap:8px;
+    align-self:flex-start;
+    margin-top:2px;
+  }
+  .chip{
+    font-size:11.5px;
+    padding:8px 13px;
+    border-radius:100px;
+    border:1px solid var(--line);
+    background:var(--parchment);
+    color:var(--ink);
+    font-weight:600;
+  }
+
+  .chat-input-bar{
+    display:flex; align-items:center; gap:10px;
+    padding:12px 18px;
+    border-top:1px solid var(--line);
+    flex-shrink:0;
+  }
+  .chat-input{
+    flex:1;
+    background:#E8E1CB;
+    border-radius:100px;
+    padding:11px 16px;
+    font-size:13px;
+    color:var(--ink-soft);
+  }
+  .send-btn{
+    width:38px; height:38px; border-radius:50%;
+    background:var(--gold);
+    display:flex; align-items:center; justify-content:center;
+    color:var(--forest-deep);
+    font-size:15px;
+    flex-shrink:0;
+  }
+
+  /* ================= GOALS SCREEN ================= */
+  .goals-header{
+    padding:20px 24px 14px;
+    flex-shrink:0;
+  }
+  .goals-title{ font-family:'Fraunces', serif; font-size:25px; font-weight:500; color:var(--ink); }
+  .goals-sub{ font-size:12.5px; color:var(--ink-soft); margin-top:4px; }
+
+  .goals-scroll{
+    flex:1;
+    overflow:hidden;
+    padding:4px 24px 18px;
+  }
+
+  .active-goal{
+    background:var(--forest);
+    border-radius:20px;
+    padding:16px 18px;
+    margin-bottom:10px;
+    color:var(--parchment);
+  }
+  .active-goal .g-top{ display:flex; justify-content:space-between; align-items:center; margin-bottom:9px;}
+  .active-goal .g-name{ font-family:'Fraunces', serif; font-size:14.5px; font-weight:600;}
+  .active-goal .g-pct{ font-size:11.5px; color:var(--gold); font-weight:700;}
+  .bar-track{ height:6px; border-radius:4px; background:rgba(242,236,218,0.18); overflow:hidden;}
+  .bar-fill{ height:100%; border-radius:4px; background:var(--gold);}
+
+  .section-label{
+    font-size:12.5px;
+    color:var(--ink-soft);
+    font-weight:600;
+    margin:16px 0 10px;
+  }
+
+  .cat-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:9px;
+  }
+  .cat-tile{
+    background:#EFE8D2;
+    border:1px solid var(--line);
+    border-radius:16px;
+    padding:12px 10px;
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+  }
+  .cat-icon{ font-size:17px; }
+  .cat-name{ font-size:11.5px; font-weight:600; color:var(--ink); line-height:1.25; }
+
+</style>
+</head>
+<body>
+  <div class="row">
+
+    <!-- ============ CHAT / COACH SCREEN ============ -->
+    <div class="stage">
+      <div class="phone">
+        <div class="status"><span>9:41</span><span>●●●●  📶  🔋</span></div>
+
+        <div class="chat-header">
+          <div class="chat-avatar">🧭</div>
+          <div>
+            <div class="chat-title">Coach</div>
+            <div class="chat-status">● Listening</div>
+          </div>
+        </div>
+
+        <div class="chat-body">
+          <div class="bubble-tag">CONFIDENCE</div>
+          <div class="bubble bot">Good evening, Maya. You mentioned feeling nervous about tomorrow's presentation — want to talk through it?</div>
+          <div class="bubble user">Yeah. I keep rehearsing the opening and freezing up.</div>
+          <div class="bubble bot">That's really common. Let's separate the nerves from the content — the content you already know well. What's the very first sentence you want to say?</div>
+          <div class="bubble user">"Today I want to share what we learned from the pilot."</div>
+          <div class="bubble bot">That's a strong, simple line. Say it out loud three times right now — notice it gets easier each time.</div>
+          <div class="chip-row">
+            <div class="chip">Practice again</div>
+            <div class="chip">Breathing exercise</div>
+            <div class="chip">Change topic</div>
+          </div>
+        </div>
+
+        <div class="chat-input-bar">
+          <div class="chat-input">Message Coach…</div>
+          <div class="send-btn">↑</div>
+        </div>
+
+        <div class="nav">
+          <div class="nav-item"><span>🏠</span>Today</div>
+          <div class="nav-item"><span>📓</span>Journal</div>
+          <div class="nav-item active"><span>🧭</span>Coach<div class="nav-dot"></div></div>
+          <div class="nav-item"><span>🎯</span>Goals</div>
+        </div>
+      </div>
+      <div class="caption">Coach — an AI chat for every life category</div>
+    </div>
+
+    <!-- ============ GOALS SCREEN ============ -->
+    <div class="stage">
+      <div class="phone">
+        <div class="status"><span>9:41</span><span>●●●●  📶  🔋</span></div>
+
+        <div class="goals-header">
+          <div class="goals-title">Your goals</div>
+          <div class="goals-sub">2 active · start a new conversation below</div>
+        </div>
+
+        <div class="goals-scroll">
+          <div class="active-goal">
+            <div class="g-top"><div class="g-name">Speak up more in meetings</div><div class="g-pct">64%</div></div>
+            <div class="bar-track"><div class="bar-fill" style="width:64%"></div></div>
+          </div>
+          <div class="active-goal">
+            <div class="g-top"><div class="g-name">Build a consistent sleep routine</div><div class="g-pct">38%</div></div>
+            <div class="bar-track"><div class="bar-fill" style="width:38%"></div></div>
+          </div>
+
+          <div class="section-label">Start a conversation — 20 categories</div>
+          <div class="cat-grid">
+            <div class="cat-tile"><div class="cat-icon">🎯</div><div class="cat-name">Goal Setting</div></div>
+            <div class="cat-tile"><div class="cat-icon">💼</div><div class="cat-name">Career Growth</div></div>
+            <div class="cat-tile"><div class="cat-icon">💞</div><div class="cat-name">Relationships</div></div>
+            <div class="cat-tile"><div class="cat-icon">🧘</div><div class="cat-name">Mindfulness</div></div>
+            <div class="cat-tile"><div class="cat-icon">💰</div><div class="cat-name">Finances</div></div>
+            <div class="cat-tile"><div class="cat-icon">🦁</div><div class="cat-name">Confidence</div></div>
+            <div class="cat-tile"><div class="cat-icon">🎨</div><div class="cat-name">Creativity</div></div>
+            <div class="cat-tile"><div class="cat-icon">🗣️</div><div class="cat-name">Communication</div></div>
+            <div class="cat-tile"><div class="cat-icon">🧑‍🤝‍🧑</div><div class="cat-name">Leadership</div></div>
+            <div class="cat-tile"><div class="cat-icon">❤️‍🩹</div><div class="cat-name">Emotional Intelligence</div></div>
+            <div class="cat-tile"><div class="cat-icon">🔁</div><div class="cat-name">Habits & Discipline</div></div>
+            <div class="cat-tile"><div class="cat-icon">⏱️</div><div class="cat-name">Productivity</div></div>
+            <div class="cat-tile"><div class="cat-icon">🙏</div><div class="cat-name">Purpose & Spirituality</div></div>
+            <div class="cat-tile"><div class="cat-icon">👨‍👩‍👧</div><div class="cat-name">Family</div></div>
+            <div class="cat-tile"><div class="cat-icon">🤝</div><div class="cat-name">Friendship</div></div>
+            <div class="cat-tile"><div class="cat-icon">🪞</div><div class="cat-name">Self-Love</div></div>
+            <div class="cat-tile"><div class="cat-icon">🌊</div><div class="cat-name">Stress Management</div></div>
+            <div class="cat-tile"><div class="cat-icon">📚</div><div class="cat-name">Learning & Growth</div></div>
+            <div class="cat-tile"><div class="cat-icon">🌙</div><div class="cat-name">Rest & Recovery</div></div>
+            <div class="cat-tile"><div class="cat-icon">🏃</div><div class="cat-name">Health & Fitness</div></div>
+          </div>
+        </div>
+
+        <div class="nav">
+          <div class="nav-item"><span>🏠</span>Today</div>
+          <div class="nav-item"><span>📓</span>Journal</div>
+          <div class="nav-item"><span>🧭</span>Coach</div>
+          <div class="nav-item active"><span>🎯</span>Goals<div class="nav-dot"></div></div>
+        </div>
+      </div>
+      <div class="caption">Goals — active goals + 20 growth categories</div>
+    </div>
+
+  </div>
+</body>
+</html>
